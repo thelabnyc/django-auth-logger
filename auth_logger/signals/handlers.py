@@ -37,7 +37,6 @@ def handle_user_logged_in(sender, user, request, **kwargs):
             user,
             request,
         )
-        print(log_string)
         logger.info(log_string)
 
 
