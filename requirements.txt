@@ -1,1 +1,4 @@
 Django==1.11.2
+django-ipware==1.1.6
+versiontag
+tox==2.7.0

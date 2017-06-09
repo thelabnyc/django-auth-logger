@@ -1,8 +1,27 @@
-image: python:3.6
+stages:
+  - lint
+  - test
+
+cache:
+  key: "$CI_PROJECT_NAME"
+  paths:
+    - $HOME/.cache/pip
 
 before_script:
-  - pip install -r requirements.txt
+  - pip install tox
 
-test:
-  script:
-    - ./manage.py test
+lint:
+  stage: lint
+  image: python:3.6
+  script: tox -e lint
+
+test_python35:
+  stage: test
+  image: python:3.5
+  script: tox -e 'py35-django{110,111}'
+
+test_python36:
+  stage: test
+  image: python:3.6
+  script: tox -e 'py36-django{110,111}'
+

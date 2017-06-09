@@ -1,6 +1,7 @@
 from django.contrib.auth.signals import user_logged_in, user_login_failed
+from django.utils import timezone
+from ipware.ip import get_real_ip
 import logging
-import datetime
 
 
 logger = logging.getLogger(__name__)
@@ -10,12 +11,7 @@ logger = logging.getLogger(__name__)
 
 def get_client_ip(request):
     """ Try to get request's ip address even when behind cdn """
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+    return get_real_ip(request)
 
 
 def should_log_user(user):
@@ -30,7 +26,7 @@ def build_auth_log_string(message: str, user, request):
         message,
         user,
         get_client_ip(request),
-        datetime.datetime.now(),
+        timezone.now(),
     )
 
 
@@ -41,6 +37,7 @@ def handle_user_logged_in(sender, user, request, **kwargs):
             user,
             request,
         )
+        print(log_string)
         logger.info(log_string)
 
 
