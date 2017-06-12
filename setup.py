@@ -14,7 +14,7 @@ setup(
     description="A tiny project to log login attempts. Log them only to standard logging - not the database.",
     license="Apache License",
     keywords="django wagtail",
-    url="https://gitlab.com/thelabnyc/wagtail-links",
+    url="https://gitlab.com/thelabnyc/django-auth-logger",
     packages=find_packages(),
     include_package_data=True,
     classifiers=[
