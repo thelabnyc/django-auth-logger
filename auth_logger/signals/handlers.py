@@ -15,7 +15,7 @@ def get_client_ip(request):
 
 
 def should_log_user(user):
-    if user.is_staff:
+    if user is not None and user.is_staff:
         return True
     return False
 
@@ -30,7 +30,7 @@ def build_auth_log_string(message: str, user, request):
     )
 
 
-def handle_user_logged_in(sender, user, request, **kwargs):
+def handle_user_logged_in(sender, user=None, request=None, **kwargs):
     if should_log_user(user):
         log_string = build_auth_log_string(
             "User login successful",
@@ -40,7 +40,7 @@ def handle_user_logged_in(sender, user, request, **kwargs):
         logger.info(log_string)
 
 
-def handle_user_login_failed(sender, user, request, **kwargs):
+def handle_user_login_failed(sender, user=None, request=None, **kwargs):
     if should_log_user(user):
         log_string = build_auth_log_string(
             "User login failed",

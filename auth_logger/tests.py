@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from unittest.mock import patch
 User = get_user_model()
 
@@ -37,3 +37,9 @@ class AuthLoggerTestCase(TestCase):
         self.client.post('/admin/login/',
                          {'username': 'test', 'password': 'sometest'})
         mock_logger.info.assert_not_called()
+
+    def test_authenticate_method(self):
+        """ Django authenticate method can be called with just a tokem (no user)
+        https://docs.djangoproject.com/en/1.11/topics/auth/default/#authenticating-users
+        """
+        authenticate(token="blarg")
