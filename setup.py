@@ -4,6 +4,20 @@ Distribution().fetch_build_eggs('versiontag')
 
 from versiontag import get_version, cache_git_tag  # NOQA
 
+
+packages = find_packages('src')
+
+install_requires = [
+    'Django>=1.11',
+    'django-ipware>=1.1.6',
+]
+
+extras_require = {
+    'development': [
+        'flake8>=3.2.1',
+    ],
+}
+
 cache_git_tag()
 
 setup(
@@ -26,7 +40,6 @@ setup(
         'Intended Audience :: Developers',
         "License :: OSI Approved :: Apache Software License",
     ],
-    install_requires=[
-        'django-ipware',
-    ],
+    install_requires=install_requires,
+    extras_require=extras_require,
 )

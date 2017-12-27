@@ -1,5 +1,4 @@
 stages:
-  - lint
   - test
 
 cache:
@@ -10,13 +9,7 @@ cache:
 before_script:
   - pip install tox
 
-lint:
-  stage: lint
-  image: python:3.6
-  script: tox -e lint
-
 test_python36:
   stage: test
   image: python:3.6
-  script: tox -e 'py36-django{110,111}'
-
+  script: tox --skip-missing-interpreters
