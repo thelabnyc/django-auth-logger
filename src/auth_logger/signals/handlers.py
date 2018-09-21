@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 # If this gets more complex - maybe consider a class so it can be extended
 
+
 def get_client_ip(request):
     """ Try to get request's ip address even when behind cdn """
     return get_real_ip(request)
@@ -48,6 +49,7 @@ def handle_user_login_failed(sender, user=None, request=None, **kwargs):
             request,
         )
         logger.info(log_string)
+
 
 user_logged_in.connect(handle_user_logged_in)
 user_login_failed.connect(handle_user_login_failed)
