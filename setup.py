@@ -18,6 +18,7 @@ install_requires = [
 extras_require = {
     'development': [
         'flake8>=3.2.1',
+        'freezegun>=0.3.10',
     ],
 }
 
