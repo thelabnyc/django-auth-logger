@@ -53,9 +53,14 @@ If we do add said configuration it will probably look something like this:
 Changelog
 =========
 
+1.1.0
+------------------
+- Log all login attempts, instead of just logins for staff users.
+- Fix bug which prevented failed login attempts from being correctly logged.
+
 1.0.1
 ------------------
-- Add support for Django 2.0
+- Add support for Django 2.0.
 
 1.0.0
 ------------------
