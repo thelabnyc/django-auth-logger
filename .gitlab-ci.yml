@@ -14,6 +14,11 @@ test_python36:
   image: python:3.6
   script: tox -e 'py36-django{111,200,210}'
 
+test_python37:
+  stage: test
+  image: python:3.7
+  script: tox -e 'py37-django{111,200,210}'
+
 test_pypy35:
   stage: test
   image: pypy:3-5
