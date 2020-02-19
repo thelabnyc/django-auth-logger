@@ -53,6 +53,10 @@ If we do add said configuration it will probably look something like this:
 Changelog
 =========
 
+1.1.1
+------------------
+- Update test suite for with Django 2.2 and Python 3.8
+
 1.1.0
 ------------------
 - Log all login attempts, instead of just logins for staff users.
