@@ -1,6 +1,6 @@
 from django.contrib.auth.signals import user_logged_in, user_login_failed
 from django.utils import timezone
-from ipware.ip import get_real_ip
+from ipware import get_client_ip
 import logging
 
 
@@ -11,11 +11,14 @@ def build_auth_log_string(message: str, username: str, email: str, request):
     """
     Build a string with user and auth info for logging
     """
+    client_ip, is_routable = '', False
+    if request:
+        client_ip, is_routable = get_client_ip(request)
     msg = "{message} username:[{username}] email:[{email}] ip:[{ipaddr}] datetime:[{now}]".format(
         message=message,
         username=username or '',
         email=email or '',
-        ipaddr=get_real_ip(request) if request else '',
+        ipaddr=client_ip,
         now=timezone.now())
     return msg
 
