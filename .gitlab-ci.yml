@@ -19,7 +19,7 @@ test_python36:
   image: python:3.6
   script:
     - pip install tox
-    - tox -e 'py36-django{111,220,300}'
+    - tox -e 'py36-django{220,300}'
 
 test_python37:
   stage: test
@@ -40,4 +40,4 @@ test_pypy3:
   image: pypy:3
   script:
     - pip install tox
-    - tox -e 'pypy3-django{111,220,300}'
+    - tox -e 'pypy3-django{220,300}'
