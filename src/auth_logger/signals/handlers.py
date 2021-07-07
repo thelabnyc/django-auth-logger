@@ -11,27 +11,30 @@ def build_auth_log_string(message: str, username: str, email: str, request):
     """
     Build a string with user and auth info for logging
     """
-    client_ip, is_routable = '', False
+    client_ip, is_routable = "", False
     if request:
         client_ip, is_routable = get_client_ip(request)
     msg = "{message} username:[{username}] email:[{email}] ip:[{ipaddr}] datetime:[{now}]".format(
         message=message,
-        username=username or '',
-        email=email or '',
+        username=username or "",
+        email=email or "",
         ipaddr=client_ip,
-        now=timezone.now())
+        now=timezone.now(),
+    )
     return msg
 
 
 def handle_user_logged_in(sender, user=None, request=None, **kwargs):
     username, email = (None, None) if user is None else (user.username, user.email)
-    log_string = build_auth_log_string("User Login Successful", username, email, request)
+    log_string = build_auth_log_string(
+        "User Login Successful", username, email, request
+    )
     logger.info(log_string)
 
 
 def handle_user_login_failed(sender, credentials, request=None, **kwargs):
-    username = credentials.get('username', None)
-    email = credentials.get('email', None)
+    username = credentials.get("username", None)
+    email = credentials.get("email", None)
     log_string = build_auth_log_string("User Login Failed", username, email, request)
     logger.info(log_string)
 
