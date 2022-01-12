@@ -12,7 +12,7 @@ packages = find_packages("src")
 
 install_requires = [
     "Django>=2.2",
-    "django-ipware>=3.0.0,<4.0.0",
+    "django-ipware>=3.0.0",
 ]
 
 extras_require = {
