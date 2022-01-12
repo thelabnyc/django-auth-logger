@@ -53,6 +53,10 @@ If we do add said configuration it will probably look something like this:
 Changelog
 =========
 
+2.2.0
+------------------
+- Support django-ipware v4
+
 2.1.0
 ------------------
 - Add Django 3.2 to test suite
