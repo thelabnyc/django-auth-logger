@@ -36,9 +36,6 @@ test:
       - IMAGE: python:3.9
         TOX_ENVS: py39-django{220,300,310,320}
 
-      - IMAGE: pypy:3
-        TOX_ENVS: pypy3-django{220,300,310,320}
-
 publish_pkg:
   image: python:3.9
   stage: release
