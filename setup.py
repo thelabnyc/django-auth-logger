@@ -11,7 +11,7 @@ from versiontag import get_version, cache_git_tag  # NOQA
 packages = find_packages("src")
 
 install_requires = [
-    "Django>=2.2",
+    "Django>=3.2",
     "django-ipware>=3.0.0",
 ]
 
