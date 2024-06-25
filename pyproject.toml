@@ -23,4 +23,4 @@ django-ipware = ">=3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = ">=7.1.0"
-freezegun = ">=0.3.15"
+freezegun = ">=1.5.1"
