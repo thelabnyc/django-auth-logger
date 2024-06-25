@@ -18,7 +18,7 @@ from = "src"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = ">=3.2"
+Django = ">=5.0.6"
 django-ipware = ">=3.0.0"
 
 [tool.poetry.group.dev.dependencies]
