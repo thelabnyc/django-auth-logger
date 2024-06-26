@@ -19,7 +19,7 @@ from = "src"
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = ">=4.2"
-django-ipware = ">=3.0.7"
+django-ipware = ">=7.0.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = ">=7.1.0"
