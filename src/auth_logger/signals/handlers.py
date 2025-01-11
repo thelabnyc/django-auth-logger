@@ -2,12 +2,20 @@ from django.contrib.auth.signals import user_logged_in, user_login_failed
 from django.utils import timezone
 from ipware import get_client_ip
 import logging
+from django.contrib.auth.models import User
+from django.core.handlers.wsgi import WSGIRequest
+from typing import Dict, Optional, Type, Any
 
 
 logger = logging.getLogger(__name__)
 
 
-def build_auth_log_string(message: str, username: str, email: str, request):
+def build_auth_log_string(
+    message: str,
+    username: Optional[str],
+    email: Optional[str],
+    request: Optional[WSGIRequest],
+) -> str:
     """
     Build a string with user and auth info for logging
     """
@@ -24,7 +32,12 @@ def build_auth_log_string(message: str, username: str, email: str, request):
     return msg
 
 
-def handle_user_logged_in(sender, user=None, request=None, **kwargs):
+def handle_user_logged_in(
+    sender: Type[User],
+    user: Optional[User] = None,
+    request: Optional[WSGIRequest] = None,
+    **kwargs: Any,
+) -> None:
     username, email = (None, None) if user is None else (user.username, user.email)
     log_string = build_auth_log_string(
         "User Login Successful", username, email, request
@@ -32,7 +45,12 @@ def handle_user_logged_in(sender, user=None, request=None, **kwargs):
     logger.info(log_string)
 
 
-def handle_user_login_failed(sender, credentials, request=None, **kwargs):
+def handle_user_login_failed(
+    sender: str,
+    credentials: Dict[str, str],
+    request: Optional[WSGIRequest] = None,
+    **kwargs: Any,
+) -> None:
     username = credentials.get("username", None)
     email = credentials.get("email", None)
     log_string = build_auth_log_string("User Login Failed", username, email, request)
