@@ -1,6 +1,7 @@
+from unittest.mock import MagicMock, patch
+
+from django.contrib.auth import authenticate, get_user_model
 from django.test import TestCase
-from django.contrib.auth import get_user_model, authenticate
-from unittest.mock import patch
 from freezegun import freeze_time
 
 User = get_user_model()
@@ -11,7 +12,7 @@ class AuthLoggerTestCase(TestCase):
 
     @freeze_time("2018-09-21T10:11:12-04:00")
     @patch("auth_logger.signals.handlers.logger")
-    def test_login(self, mock_logger):
+    def test_login(self, mock_logger: MagicMock) -> None:
         """
         Test that successful log in attempts for staff users are logged
         """
@@ -38,7 +39,7 @@ class AuthLoggerTestCase(TestCase):
 
     @freeze_time("2018-09-21T10:11:12-04:00")
     @patch("auth_logger.signals.handlers.logger")
-    def test_failed_login(self, mock_logger):
+    def test_failed_login(self, mock_logger: MagicMock) -> None:
         """
         Test that failed log in attempts for staff users are logged
         """
@@ -63,7 +64,7 @@ class AuthLoggerTestCase(TestCase):
 
     @freeze_time("2018-09-21T10:11:12-04:00")
     @patch("auth_logger.signals.handlers.logger")
-    def test_non_staff_login(self, mock_logger):
+    def test_non_staff_login(self, mock_logger: MagicMock) -> None:
         """
         Test that successful log in attempts for non-staff users are not logged
         """
@@ -73,7 +74,7 @@ class AuthLoggerTestCase(TestCase):
         mock_logger.info.assert_not_called()
 
     @freeze_time("2018-09-21T10:11:12-04:00")
-    def test_authenticate_method(self):
+    def test_authenticate_method(self) -> None:
         """
         Django authenticate method can be called with just a token (no user)
 
