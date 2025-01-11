@@ -1,6 +1,7 @@
-from django.test import TestCase
-from django.contrib.auth import get_user_model, authenticate
 from unittest.mock import MagicMock, patch
+
+from django.contrib.auth import authenticate, get_user_model
+from django.test import TestCase
 from freezegun import freeze_time
 
 User = get_user_model()

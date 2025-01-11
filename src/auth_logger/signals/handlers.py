@@ -1,11 +1,11 @@
+from typing import Any, Dict, Optional, Type
+import logging
+
+from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in, user_login_failed
+from django.core.handlers.wsgi import WSGIRequest
 from django.utils import timezone
 from ipware import get_client_ip
-import logging
-from django.contrib.auth.models import User
-from django.core.handlers.wsgi import WSGIRequest
-from typing import Dict, Optional, Type, Any
-
 
 logger = logging.getLogger(__name__)
 
