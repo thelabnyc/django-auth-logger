@@ -22,7 +22,7 @@ Django = ">=4.2"
 django-ipware = ">=7.0.1"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = ">=7.1.1"
+flake8 = ">=7.1.2"
 freezegun = ">=1.5.1"
 django-stubs = {extras = ["compatible-mypy"], version = "^5.1.3"}
 
