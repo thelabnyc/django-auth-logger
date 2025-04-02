@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional, Type
+from typing import Any
 import logging
 
 from django.contrib.auth.models import User
@@ -12,9 +12,9 @@ logger = logging.getLogger(__name__)
 
 def build_auth_log_string(
     message: str,
-    username: Optional[str],
-    email: Optional[str],
-    request: Optional[WSGIRequest],
+    username: str | None,
+    email: str | None,
+    request: WSGIRequest | None,
 ) -> str:
     """
     Build a string with user and auth info for logging
@@ -33,9 +33,9 @@ def build_auth_log_string(
 
 
 def handle_user_logged_in(
-    sender: Type[User],
-    user: Optional[User] = None,
-    request: Optional[WSGIRequest] = None,
+    sender: type[User],
+    user: User | None = None,
+    request: WSGIRequest | None = None,
     **kwargs: Any,
 ) -> None:
     username, email = (None, None) if user is None else (user.username, user.email)
@@ -47,8 +47,8 @@ def handle_user_logged_in(
 
 def handle_user_login_failed(
     sender: str,
-    credentials: Dict[str, str],
-    request: Optional[WSGIRequest] = None,
+    credentials: dict[str, str],
+    request: WSGIRequest | None = None,
     **kwargs: Any,
 ) -> None:
     username = credentials.get("username", None)
