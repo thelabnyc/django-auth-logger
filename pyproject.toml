@@ -17,7 +17,7 @@ include = "auth_logger"
 from = "src"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 Django = ">=4.2"
 django-ipware = ">=7.0.1"
 
