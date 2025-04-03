@@ -1,3 +1,13 @@
+## v2.3.0 (2025-04-03)
+
+### Feat
+
+- support Django 5.2 / Python 3.13. Drop Django 5.0 / Python 3.10
+
+### Refactor
+
+- add pyupgrade / django-upgrade precommit hooks
+
 ## v2.2.2 (2025-01-14)
 
 ### Refactor
