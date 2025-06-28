@@ -4,7 +4,7 @@ RUN mkdir /code
 WORKDIR /code
 
 ADD . /code/
-RUN poetry install
+RUN uv sync
 
 RUN mkdir /tox
 ENV TOX_WORK_DIR='/tox'

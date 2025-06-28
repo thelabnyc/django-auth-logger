@@ -1,30 +1,38 @@
 [build-system]
-requires = [ "poetry-core>=2.1.2",]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
+[project]
 name = "django-auth-logger"
 version = "2.3.0"
 description = "A tiny project to log login attempts. Log them only to standard logging - not the database."
-authors = ["thelab <thelabdev@thelab.co>"]
 readme = "README.rst"
-homepage = "https://gitlab.com/thelabnyc/django-auth-logger"
-repository = "https://gitlab.com/thelabnyc/django-auth-logger"
-license = "ISC"
+dependencies = ["Django (>=4.2)", "django-ipware (>=7.0.1)"]
+requires-python = ">=3.11"
 
-[[tool.poetry.packages]]
-include = "auth_logger"
-from = "src"
+[project.license]
+text = "ISC"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-Django = ">=4.2"
-django-ipware = ">=7.0.1"
+[[project.authors]]
+name = "thelab"
+email = "thelabdev@thelab.co"
 
-[tool.poetry.group.dev.dependencies]
-flake8 = "==7.3.0"
-freezegun = "==1.5.2"
-django-stubs = {extras = ["compatible-mypy"], version = "5.2.1"}
+[project.urls]
+Homepage = "https://gitlab.com/thelabnyc/django-auth-logger"
+Repository = "https://gitlab.com/thelabnyc/django-auth-logger"
+
+[dependency-groups]
+dev = [
+    "flake8 (==7.3.0)",
+    "freezegun==1.5.2",
+    "django-stubs[compatible-mypy] (==5.2.1)",
+    "tox>=4.27.0",
+    "tox-uv>=1.26.1",
+    "coverage>=7.9.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["auth_logger"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
@@ -33,7 +41,7 @@ gpg_sign = true
 tag_format = "v$version"
 update_changelog_on_bump = true
 changelog_merge_prerelease = true
-version_provider = "poetry"
+version_provider = "pep621"
 version_scheme = "pep440"
 version_files = [
     "pyproject.toml:version",
