@@ -23,7 +23,7 @@ Repository = "https://gitlab.com/thelabnyc/django-auth-logger"
 
 [dependency-groups]
 dev = [
-    "flake8 (==7.3.0)",
+    "ruff (>=0.11.6)",
     "freezegun==1.5.2",
     "django-stubs[compatible-mypy] (==5.2.1)",
     "tox>=4.27.0",
@@ -43,16 +43,45 @@ update_changelog_on_bump = true
 changelog_merge_prerelease = true
 version_provider = "pep621"
 version_scheme = "pep440"
-version_files = [
-    "pyproject.toml:version",
-]
-pre_bump_hooks = [
-    "pre-commit run --all-files || true",
-]
-post_bump_hooks = [
-    "git push origin master $CZ_POST_CURRENT_TAG_VERSION"
-]
+version_files = ["pyproject.toml:version"]
+pre_bump_hooks = ["pre-commit run --all-files || true"]
+post_bump_hooks = ["git push origin master $CZ_POST_CURRENT_TAG_VERSION"]
 
 [tool.isort]
 profile = "black"
 from_first = true
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.lint.isort]
+from-first = true
+
+[tool.mypy]
+python_version = "3.11"
+plugins = ["mypy_django_plugin.main"]
+
+# Strict mode, see mypy --help
+warn_unused_configs = true
+disallow_subclassing_any = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_reexport = true
+show_error_codes = true
+# Not turned on by strict
+strict_equality = true
+
+[tool.django-stubs]
+django_settings_module = "sandbox.settings"
+
+[[tool.mypy.overrides]]
+module = "ipware.*"
+ignore_missing_imports = true

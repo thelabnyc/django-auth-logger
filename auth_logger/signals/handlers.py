@@ -39,9 +39,7 @@ def handle_user_logged_in(
     **kwargs: Any,
 ) -> None:
     username, email = (None, None) if user is None else (user.username, user.email)
-    log_string = build_auth_log_string(
-        "User Login Successful", username, email, request
-    )
+    log_string = build_auth_log_string("User Login Successful", username, email, request)
     logger.info(log_string)
 
 
