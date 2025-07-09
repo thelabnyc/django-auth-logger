@@ -16,9 +16,7 @@ class AuthLoggerTestCase(TestCase):
         """
         Test that successful log in attempts for staff users are logged
         """
-        user = User.objects.create_user(
-            username="test", email="test@example.com", password="sometest"
-        )
+        user = User.objects.create_user(username="test", email="test@example.com", password="sometest")
         user.is_staff = True
         user.is_superuser = True
         user.save()
@@ -58,9 +56,7 @@ class AuthLoggerTestCase(TestCase):
             HTTP_X_FORWARDED_FOR="32.222.116.183",
         )
 
-        mock_logger.info.assert_called_with(
-            "User Login Failed username:[test] email:[] ip:[32.222.116.183] datetime:[2018-09-21 14:11:12+00:00]"
-        )
+        mock_logger.info.assert_called_with("User Login Failed username:[test] email:[] ip:[32.222.116.183] datetime:[2018-09-21 14:11:12+00:00]")
 
     @freeze_time("2018-09-21T10:11:12-04:00")
     @patch("auth_logger.signals.handlers.logger")
