@@ -31,6 +31,11 @@ dev = [
     "coverage>=7.10.6",
 ]
 
+[[tool.uv.index]]
+name = "thelabnyc"
+url = "https://gitlab.com/api/v4/groups/269576/-/packages/pypi/simple"
+explicit = true
+
 [tool.hatch.build.targets.wheel]
 packages = ["auth_logger"]
 
