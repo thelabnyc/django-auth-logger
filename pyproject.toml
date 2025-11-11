@@ -28,7 +28,7 @@ dev = [
     "django-stubs[compatible-mypy] (==5.2.7)",
     "tox>=4.32.0",
     "tox-uv>=1.29.0",
-    "coverage>=7.11.1",
+    "coverage>=7.11.2",
 ]
 
 [[tool.uv.index]]
