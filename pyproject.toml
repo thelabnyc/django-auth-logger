@@ -25,7 +25,7 @@ Repository = "https://gitlab.com/thelabnyc/django-auth-logger"
 dev = [
     "ruff (>=0.14.7)",
     "freezegun==1.5.5",
-    "django-stubs[compatible-mypy] (==5.2.7)",
+    "django-stubs[compatible-mypy] (==5.2.8)",
     "tox>=4.32.0",
     "tox-uv>=1.29.0",
     "coverage>=7.12.0",
