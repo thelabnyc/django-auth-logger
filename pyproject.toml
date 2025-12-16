@@ -7,7 +7,7 @@ name = "django-auth-logger"
 version = "2.3.0"
 description = "A tiny project to log login attempts. Log them only to standard logging - not the database."
 readme = "README.rst"
-dependencies = ["Django (>=4.2)", "django-ipware (>=7.0.1)"]
+dependencies = ["Django (>=5.2)", "django-ipware (>=7.0.1)"]
 requires-python = ">=3.11"
 
 [project.license]
