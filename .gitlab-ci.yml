@@ -22,7 +22,7 @@ test:
   stage: test
   image: "registry.gitlab.com/thelabnyc/python:${IMAGE}"
   script:
-    - uv sync
+    - uv sync --all-extras
     - uv run tox
   coverage: '/^TOTAL.+?(\d+\%)$/'
   parallel:
