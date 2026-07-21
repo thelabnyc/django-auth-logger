@@ -192,7 +192,7 @@ dev = [
     { name = "django-stubs", extras = ["compatible-mypy"], specifier = "==5.2.9" },
     { name = "freezegun", specifier = "==1.5.5" },
     { name = "ruff", specifier = ">=0.15.22" },
-    { name = "tox", specifier = ">=4.56.4" },
+    { name = "tox", specifier = ">=4.57.0" },
     { name = "tox-uv", specifier = ">=1.35.2" },
 ]
 
