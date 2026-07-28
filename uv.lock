@@ -191,7 +191,7 @@ dev = [
     { name = "coverage", specifier = ">=7.15.2" },
     { name = "django-stubs", extras = ["compatible-mypy"], specifier = "==5.2.9" },
     { name = "freezegun", specifier = "==1.5.5" },
-    { name = "ruff", specifier = ">=0.15.22" },
+    { name = "ruff", specifier = ">=0.16.0" },
     { name = "tox", specifier = ">=4.58.0" },
     { name = "tox-uv", specifier = ">=1.36.0" },
 ]
