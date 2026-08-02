@@ -19,9 +19,9 @@ def build_auth_log_string(
     """
     Build a string with user and auth info for logging
     """
-    client_ip, is_routable = "", False
+    client_ip = ""
     if request:
-        client_ip, is_routable = get_client_ip(request)
+        client_ip, _is_routable = get_client_ip(request)
     msg = "{message} username:[{username}] email:[{email}] ip:[{ipaddr}] datetime:[{now}]".format(
         message=message,
         username=username or "",
