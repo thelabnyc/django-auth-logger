@@ -213,7 +213,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.2" },
-    { name = "django-ipware", specifier = ">=7.0.1" },
+    { name = "django-ipware", specifier = ">=8.0.0" },
 ]
 
 [package.metadata.requires-dev]
