@@ -19,14 +19,14 @@ def build_auth_log_string(
     """
     Build a string with user and auth info for logging
     """
-    client_ip = ""
+    client_ip: str | None = None
     if request:
         client_ip, _is_routable = get_client_ip(request)
     msg = "{message} username:[{username}] email:[{email}] ip:[{ipaddr}] datetime:[{now}]".format(
         message=message,
         username=username or "",
         email=email or "",
-        ipaddr=client_ip,
+        ipaddr=client_ip or "",
         now=timezone.now(),
     )
     return msg
