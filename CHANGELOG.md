@@ -1,3 +1,24 @@
+## v2.4.0 (2026-10-30)
+
+### Feat
+
+- test Django 6.0 and 6.1, drop Django 4.2 and 5.1
+- support Python 3.15 and drop Python 3.11
+- support Python 3.14
+
+### Fix
+
+- **deps**: update dependency django-ipware to >=8.0.0
+- handle None client IP from django-ipware 8
+- **deps**: update dependency django to >=5.2
+- prevent renovate from pointing all URLs at gitlab
+- update docker image tag format
+
+### Refactor
+
+- migrate black/flake8 -> ruff
+- migrate from poetry -> uv
+
 ## v2.3.0 (2025-04-03)
 
 ### Feat
