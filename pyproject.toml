@@ -26,7 +26,7 @@ dev = [
     "ruff (>=0.17.4)",
     "freezegun==1.5.5",
     "django-stubs[compatible-mypy] (==6.1.2)",
-    "tox>=4.67.11",
+    "tox>=4.67.12",
     "tox-uv>=1.37.5",
     "coverage>=7.17.2",
 ]
